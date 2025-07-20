@@ -50,7 +50,7 @@ const addProduct = async (req, res) => {
     await newProduct.save();
     res.status(201).json({ success: true, message: "Product Added" });
   } catch (error) {
-    res.status(500).json({ success: false, message: "Internal server error" });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
@@ -61,7 +61,7 @@ const getAllProduct = async (req, res) => {
     const products = await productModel.find({});
     res.status(200).json(products);
   } catch (error) {
-    res.status(500).json({ success: false, message: "Internal server error" });
+    res.status(500).json({ success: false, message: error.message });
   }
 };
 
